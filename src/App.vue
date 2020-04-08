@@ -1,32 +1,50 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <Menu />
+    <div class="conteudo">
+      <router-view></router-view>
     </div>
-    <router-view />
   </div>
 </template>
+<script>
+import Menu from "./components/Menu";
+
+export default {
+  name: "App",
+  components: {
+    Menu
+  },
+  watch: {
+    $route(to, from) {
+      console.log(to);
+
+      console.log(from);
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Lato", sans-serif;
+}
+.conteudo {
+  padding: 10px 200px;
   text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.botao {
+  padding: 10px 15px;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  margin: 10px 0;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.botao-primario {
+  background-color: #026977;
+  color: #fff;
 }
 </style>
